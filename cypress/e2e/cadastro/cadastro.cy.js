@@ -6,7 +6,7 @@ beforeEach(() => {
 });
 
 describe("Teste da funcionalidade de cadastro", () => {
-  it.only("Deve cadastrar uma nova conta com sucesso", () => {
+  it("Deve cadastrar uma nova conta com sucesso", () => {
     cy.fixture("usuario.json").then((usuario) => {
       CadastroPage.clicarBotaoCadastro();
       CadastroPage.preencherEmail(usuario.email);
@@ -68,5 +68,21 @@ describe("Teste da funcionalidade de cadastro", () => {
     CadastroPage.preencherSaldo();
     CadastroPage.confirmarCadastro();
     CadastroPage.validarMensagemErro("As senhas não são iguais");
+  });
+
+  it.only("Deve exibir mensagem de erro ao tentar cadastrar uma conta com email já cadastrado", () => {
+    cy.fixture("usuario.json").then((usuario) => {
+      // Primeiro cadastro para garantir que o email já está cadastrado
+      cy.cadastro();
+      CadastroPage.clicarBotaoCadastro();
+      CadastroPage.limparCampos();
+      CadastroPage.preencherEmail(usuario.email);
+      CadastroPage.preencherNome(usuario.nome);
+      CadastroPage.preencherSenha(usuario.senha);
+      CadastroPage.preencherConfirmarSenha(usuario.senha);
+      CadastroPage.preencherSaldo();
+      CadastroPage.confirmarCadastro();
+      CadastroPage.validarMensagemErro("Email já cadastrado");
+    });
   });
 });
