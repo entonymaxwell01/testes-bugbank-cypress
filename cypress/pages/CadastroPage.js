@@ -1,28 +1,24 @@
 import { CadastroPageElements } from "../elements/CadastroPage.elements";
-import { NotificacaoElements } from "../elements/Geral.elements";
-import { faker } from "@faker-js/faker";
+import { NotificacaoElements } from "../elements/Notificacao.elements";
 
 class CadastroPage {
   clicarBotaoCadastro() {
     cy.get(CadastroPageElements.cadastroButton).should("be.visible").click();
   }
 
-  preencherEmail() {
-    cy.get(CadastroPageElements.emailInput)
-      .click({ force: true })
-      .type(faker.internet.email());
+  preencherEmail(email) {
+    cy.get(CadastroPageElements.emailInput).click({ force: true }).type(email);
   }
 
-  preencherNome() {
-    cy.get(CadastroPageElements.nomeInput)
-      .click({ force: true })
-      .type(faker.person.firstName());
+  preencherNome(nome) {
+    cy.get(CadastroPageElements.nomeInput).click({ force: true }).type(nome);
   }
 
-  preencherSenha() {
-    const senha = faker.internet.password();
-
+  preencherSenha(senha) {
     cy.get(CadastroPageElements.senhaInput).click({ force: true }).type(senha);
+  }
+
+  preencherConfirmarSenha(senha) {
     cy.get(CadastroPageElements.confirmarSenhaInput)
       .click({ force: true })
       .type(senha);
@@ -41,6 +37,25 @@ class CadastroPage {
       .should("be.visible")
       .contains("foi criada com sucesso");
     cy.get(NotificacaoElements.botaoFechar).should("be.visible").click();
+  }
+
+  validarMensagemCampoObrigatorio() {
+    cy.get(CadastroPageElements.cadastroDiv)
+      .find(NotificacaoElements.campoObrigatorioMensagem)
+      .filter((index, el) => {
+        return Cypress.$(el).css("opacity") === "1";
+      })
+      .and("have.css", "opacity", "1")
+      .contains("É campo obrigatório");
+  }
+
+  validarMensagemErro(mensagem) {
+    cy.get(NotificacaoElements.containerInformacao)
+      .should("be.visible")
+      .and("have.css", "opacity", "1")
+      .find(NotificacaoElements.textoRetorno)
+      .should("be.visible")
+      .contains(mensagem);
   }
 }
 
