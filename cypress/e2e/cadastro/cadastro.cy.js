@@ -6,15 +6,17 @@ beforeEach(() => {
 });
 
 describe("Teste da funcionalidade de cadastro", () => {
-  it("Deve cadastrar um novo usuário com sucesso", () => {
-    CadastroPage.clicarBotaoCadastro();
-    CadastroPage.preencherEmail("teste@teste.com");
-    CadastroPage.preencherNome(faker.person.firstName());
-    CadastroPage.preencherSenha("123456");
-    CadastroPage.preencherConfirmarSenha("123456");
-    CadastroPage.preencherSaldo();
-    CadastroPage.confirmarCadastro();
-    CadastroPage.validarMensagemSucesso();
+  it.only("Deve cadastrar uma nova conta com sucesso", () => {
+    cy.fixture("usuario.json").then((usuario) => {
+      CadastroPage.clicarBotaoCadastro();
+      CadastroPage.preencherEmail(usuario.email);
+      CadastroPage.preencherNome(usuario.nome);
+      CadastroPage.preencherSenha(usuario.senha);
+      CadastroPage.preencherConfirmarSenha(usuario.senha);
+      CadastroPage.preencherSaldo();
+      CadastroPage.confirmarCadastro();
+      CadastroPage.validarMensagemSucesso();
+    });
   });
 
   it("Deve exibir mensagem de campo obrigatório ao não preencher o email", () => {
@@ -27,7 +29,7 @@ describe("Teste da funcionalidade de cadastro", () => {
     CadastroPage.validarMensagemCampoObrigatorio();
   });
 
-  it.only("Deve exibir mensagem de campo obrigatório ao não preencher o nome", () => {
+  it("Deve exibir mensagem de campo obrigatório ao não preencher o nome", () => {
     CadastroPage.clicarBotaoCadastro();
     CadastroPage.preencherEmail(faker.internet.email());
     CadastroPage.preencherSenha(faker.internet.password());
