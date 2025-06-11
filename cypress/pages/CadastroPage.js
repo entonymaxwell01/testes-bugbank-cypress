@@ -47,6 +47,7 @@ class CadastroPage {
       })
       .and("have.css", "opacity", "1")
       .contains("É campo obrigatório");
+    cy.get(NotificacaoElements.botaoFechar).should("be.visible").click();
   }
 
   validarMensagemErro(mensagem) {
@@ -56,6 +57,14 @@ class CadastroPage {
       .find(NotificacaoElements.textoRetorno)
       .should("be.visible")
       .contains(mensagem);
+    cy.get(NotificacaoElements.botaoFechar).should("be.visible").click();
+  }
+
+  limparCampos() {
+    cy.get(CadastroPageElements.emailInput).clear({ force: true });
+    cy.get(CadastroPageElements.nomeInput).clear({ force: true });
+    cy.get(CadastroPageElements.senhaInput).clear({ force: true });
+    cy.get(CadastroPageElements.confirmarSenhaInput).clear({ force: true });
   }
 }
 
