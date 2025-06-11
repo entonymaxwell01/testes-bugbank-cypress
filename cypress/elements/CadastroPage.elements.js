@@ -1,4 +1,5 @@
 export const CadastroPageElements = {
+  cadastroDiv: ".card__register",
   cadastroButton:
     "button.style__ContainerButton-sc-1wsixal-0.ihdmxA.button__child",
   emailInput: ".card__register input[name='email']",
