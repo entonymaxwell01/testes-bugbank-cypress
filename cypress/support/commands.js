@@ -23,3 +23,17 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+import CadastroPage from "../pages/CadastroPage";
+
+Cypress.Commands.add("cadastro", () => {
+  cy.fixture("usuario.json").then((usuario) => {
+    CadastroPage.clicarBotaoCadastro();
+    CadastroPage.preencherEmail(usuario.email);
+    CadastroPage.preencherNome(usuario.nome);
+    CadastroPage.preencherSenha(usuario.senha);
+    CadastroPage.preencherConfirmarSenha(usuario.senha);
+    CadastroPage.preencherSaldo();
+    CadastroPage.confirmarCadastro();
+    CadastroPage.validarMensagemSucesso();
+  });
+});

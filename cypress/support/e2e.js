@@ -16,17 +16,4 @@
 // Import commands.js using ES2015 syntax:
 import "./commands";
 import "cypress-mochawesome-reporter/register";
-import CadastroPage from "../pages/CadastroPage";
-
-Cypress.Commands.add("cadastro", () => {
-  cy.fixture("usuario.json").then((usuario) => {
-    CadastroPage.clicarBotaoCadastro();
-    CadastroPage.preencherEmail(usuario.email);
-    CadastroPage.preencherNome(usuario.nome);
-    CadastroPage.preencherSenha(usuario.senha);
-    CadastroPage.preencherConfirmarSenha(usuario.senha);
-    CadastroPage.preencherSaldo();
-    CadastroPage.confirmarCadastro();
-    CadastroPage.validarMensagemSucesso();
-  });
-});
+require("@cypress/grep")();
