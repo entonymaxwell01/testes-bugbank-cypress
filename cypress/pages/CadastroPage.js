@@ -47,7 +47,6 @@ class CadastroPage {
       })
       .and("have.css", "opacity", "1")
       .contains("É campo obrigatório");
-    cy.get(NotificacaoElements.botaoFechar).should("be.visible").click();
   }
 
   validarMensagemErro(mensagem) {
