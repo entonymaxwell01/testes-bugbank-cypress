@@ -2,10 +2,10 @@ import CadastroPage from "../../pages/CadastroPage";
 import { faker } from "@faker-js/faker";
 
 beforeEach(() => {
+  cy.allure().feature("Cadastro de Usuário").story("Cadastro Padrão");
+
   cy.visit("/");
 });
-
-cy.allure().feature("Cadastro de Usuário").story("Cadastro Padrão");
 
 describe("Teste da funcionalidade de cadastro", { tags: "@cadastro" }, () => {
   it(
@@ -20,14 +20,17 @@ describe("Teste da funcionalidade de cadastro", { tags: "@cadastro" }, () => {
       cy.fixture("usuario.json").then((usuario) => {
         cy.allure().step("Acessar a página de cadastro");
         CadastroPage.clicarBotaoCadastro();
+
         cy.allure().step("Preencher dados do formulário");
         CadastroPage.preencherEmail(usuario.email);
         CadastroPage.preencherNome(usuario.nome);
         CadastroPage.preencherSenha(usuario.senha);
         CadastroPage.preencherConfirmarSenha(usuario.senha);
         CadastroPage.preencherSaldo();
+
         cy.allure().step("Confirmar o cadastro");
         CadastroPage.confirmarCadastro();
+
         cy.allure().step("Validar mensagem de sucesso");
         CadastroPage.validarMensagemSucesso();
       });
