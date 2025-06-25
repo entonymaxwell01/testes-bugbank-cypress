@@ -136,3 +136,4 @@ dist
 .pnp.*
 cypress/reports/
 cypress/screenshots
+allure-*
