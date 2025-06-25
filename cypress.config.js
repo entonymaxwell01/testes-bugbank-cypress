@@ -21,7 +21,8 @@ module.exports = defineConfig({
     baseUrl: "https://bugbank.netlify.app",
     env: {
       allure: true,
-      allureResultsPath: "cypress/allure-results",
+      allureResultsPath: "allure-results",
+      allureReportPath: "allure-report",
     },
   },
 });
