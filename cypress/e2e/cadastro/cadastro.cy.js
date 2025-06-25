@@ -5,19 +5,30 @@ beforeEach(() => {
   cy.visit("/");
 });
 
+cy.allure().feature("Cadastro de Usuário").story("Cadastro Padrão");
+
 describe("Teste da funcionalidade de cadastro", { tags: "@cadastro" }, () => {
   it(
     "Deve cadastrar uma nova conta com sucesso",
     { tags: ["@regression", "@smoke"] },
     () => {
+      cy.allure()
+        .severity("critical")
+        .description(
+          "Este teste valida o fluxo principal de cadastro de um novo usuário com saldo na conta."
+        );
       cy.fixture("usuario.json").then((usuario) => {
+        cy.allure().step("Acessar a página de cadastro");
         CadastroPage.clicarBotaoCadastro();
+        cy.allure().step("Preencher dados do formulário");
         CadastroPage.preencherEmail(usuario.email);
         CadastroPage.preencherNome(usuario.nome);
         CadastroPage.preencherSenha(usuario.senha);
         CadastroPage.preencherConfirmarSenha(usuario.senha);
         CadastroPage.preencherSaldo();
+        cy.allure().step("Confirmar o cadastro");
         CadastroPage.confirmarCadastro();
+        cy.allure().step("Validar mensagem de sucesso");
         CadastroPage.validarMensagemSucesso();
       });
     }
@@ -94,7 +105,7 @@ describe("Teste da funcionalidade de cadastro", { tags: "@cadastro" }, () => {
     }
   );
 
-  it.only(
+  it(
     "Deve exibir mensagem de erro ao tentar cadastrar uma conta com email já cadastrado",
     { tags: ["@regression", "@smoke"] },
     () => {
