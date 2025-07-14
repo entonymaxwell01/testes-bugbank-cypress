@@ -1,4 +1,3 @@
-# Nome da sua pipeline de CI/CD
 name: Pipeline de Testes Cypress
 
 on:
@@ -31,17 +30,13 @@ jobs:
         run: npm install
 
       - name: Instalar Allure Commandline
-        uses: simple-elf/allure-report-action@v1.7
-        with:
-          gh_pages: temp-gh-pages
-          allure_results: allure-results
+        run: sudo npm install -g allure-commandline
 
       - name: Rodar Testes Cypress
         run: npm run allure:run
 
       - name: Gerar Relatório Allure
         run: npm run allure:report
-        # "if: always()
         if: always()
 
       - name: Upload do Relatório Allure
@@ -57,4 +52,4 @@ jobs:
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: allure-report
+          publish_dir: ./allure-report
