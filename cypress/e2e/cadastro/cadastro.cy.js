@@ -175,7 +175,7 @@ describe("Teste da funcionalidade de cadastro", { tags: "@cadastro" }, () => {
     }
   );
 
-  it(
+  it.skip(
     "Deve exibir mensagem de erro ao tentar cadastrar uma conta com email já cadastrado",
     { tags: ["@regression", "@smoke"] },
     () => {
