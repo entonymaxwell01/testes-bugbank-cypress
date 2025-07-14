@@ -1,0 +1,60 @@
+# Nome da sua pipeline de CI/CD
+name: Pipeline de Testes Cypress
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  testes-cypress:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout do Repositório
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+          cache: "npm"
+
+      - name: Instalar Dependências
+        run: npm install
+
+      - name: Instalar Allure Commandline
+        uses: simple-elf/allure-report-action@v1.7
+        with:
+          gh_pages: temp-gh-pages
+          allure_results: allure-results
+
+      - name: Rodar Testes Cypress
+        run: npm run allure:run
+
+      - name: Gerar Relatório Allure
+        run: npm run allure:report
+        # "if: always()
+        if: always()
+
+      - name: Upload do Relatório Allure
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: allure-report
+          path: allure-report
+          retention-days: 7
+
+      - name: Deploy do Relatório para GitHub Pages
+        if: always()
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: allure-report
