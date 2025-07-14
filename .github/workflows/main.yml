@@ -15,7 +15,6 @@ permissions:
 jobs:
   testes-cypress:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout do Repositório
         uses: actions/checkout@v4
@@ -29,27 +28,34 @@ jobs:
       - name: Instalar Dependências
         run: npm install
 
-      - name: Instalar Allure Commandline
-        run: sudo npm install -g allure-commandline
-
       - name: Rodar Testes Cypress
         run: npm run allure:run
+        # Continua mesmo se os testes falharem, para podermos gerar o relatório do erro
+        continue-on-error: true
 
-      - name: Gerar Relatório Allure
-        run: npm run allure:report
+      # PASSO NOVO: Baixa o histórico de relatórios da branch gh-pages
+      - name: Baixar Histórico do Relatório
+        uses: actions/checkout@v4
         if: always()
+        continue-on-error: true
+        with:
+          ref: gh-pages
+          path: gh-pages
 
-      - name: Upload do Relatório Allure
-        uses: actions/upload-artifact@v4
+      - name: Gerar Relatório Allure com Histórico
+        uses: simple-elf/allure-report-action@v1.7
         if: always()
         with:
-          name: allure-report
-          path: allure-report
-          retention-days: 7
+          allure_results: allure-results
+          allure_history: allure-history
+          gh_pages: gh-pages
 
       - name: Deploy do Relatório para GitHub Pages
         if: always()
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./allure-report
+          # A pasta que contém o relatório e o histórico
+          publish_dir: allure-history
+          # Garante que a branch correta seja usada
+          publish_branch: gh-pages
