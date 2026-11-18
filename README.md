@@ -12,16 +12,16 @@ O projeto também contempla integração contínua com GitHub Actions e geraçã
 
 ## Tecnologias e ferramentas
 
-| Tecnologia | Aplicação |
-|---|---|
-| Cypress 14 | Automação de testes de interface (UI) |
-| JavaScript | Desenvolvimento dos scripts de automação |
+| Tecnologia              | Aplicação                                                 |
+| ----------------------- | --------------------------------------------------------- |
+| Cypress 14              | Automação de testes de interface (UI)                     |
+| JavaScript              | Desenvolvimento dos scripts de automação                  |
 | Page Object Model (POM) | Organização e reutilização das interações com a aplicação |
-| Faker.js | Geração dinâmica de dados de teste |
-| Cypress Grep | Organização e seleção de cenários por tags |
-| Mochawesome | Geração de relatórios de execução |
-| Allure Report | Visualização e análise dos resultados |
-| GitHub Actions | Integração contínua e execução automatizada |
+| Faker.js                | Geração dinâmica de dados de teste                        |
+| Cypress Grep            | Organização e seleção de cenários por tags                |
+| Mochawesome             | Geração de relatórios de execução                         |
+| Allure Report           | Visualização e análise dos resultados                     |
+| GitHub Actions          | Integração contínua e execução automatizada               |
 
 ## Escopo dos testes
 
@@ -29,14 +29,14 @@ Atualmente, a automação contempla a funcionalidade de cadastro de usuários da
 
 ### Cenários automatizados
 
-| Cenário | Descrição |
-|---|---|
-| Cadastro com sucesso | Validação do fluxo de criação de uma nova conta |
-| Cadastro sem e-mail | Validação de campo obrigatório |
-| Cadastro sem nome | Validação de campo obrigatório |
-| Cadastro sem senha | Validação de campo obrigatório |
-| Cadastro sem confirmação de senha | Validação de campo obrigatório |
-| Senhas divergentes | Validação da consistência entre senha e confirmação |
+| Cenário                           | Descrição                                           |
+| --------------------------------- | --------------------------------------------------- |
+| Cadastro com sucesso              | Validação do fluxo de criação de uma nova conta     |
+| Cadastro sem e-mail               | Validação de campo obrigatório                      |
+| Cadastro sem nome                 | Validação de campo obrigatório                      |
+| Cadastro sem senha                | Validação de campo obrigatório                      |
+| Cadastro sem confirmação de senha | Validação de campo obrigatório                      |
+| Senhas divergentes                | Validação da consistência entre senha e confirmação |
 
 **Observação:** o cenário de cadastro com e-mail previamente cadastrado também está implementado, mas atualmente permanece desabilitado (`it.skip`) e não faz parte da execução da suíte.
 
