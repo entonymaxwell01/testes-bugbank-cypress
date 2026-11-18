@@ -14,3 +14,5 @@
 // ***********************************************************
 
 // Import commands.js using ES2015 syntax:
+import "allure-cypress";
+import "./commands";
