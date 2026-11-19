@@ -32,6 +32,14 @@ When("realizo o cadastro sem preencher o campo {string}", (campo: keyof Usuario)
   CadastroPage.confirmarCadastro();
 });
 
+When("realizo o cadastro com senhas diferentes", () => {
+  const usuario = usuarioFactory({ password: "senhaIncorreta" });
+
+  CadastroPage.preencherFormulario(usuario);
+  CadastroPage.confirmarCadastro();
+  CommonPage.validarPopup("As senhas não são iguais.");
+});
+
 Then("minha conta deve ser criada com sucesso", () => {
   CadastroPage.validarCadastro("foi criada com sucesso");
 });
@@ -46,3 +54,7 @@ Then(
     }
   },
 );
+
+Then("deve ser exibida uma mensagem {string}", (textoMensagem: string) => {
+  CommonPage.validarPopup(textoMensagem);
+});

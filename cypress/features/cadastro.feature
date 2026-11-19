@@ -13,6 +13,13 @@ Funcionalidade: Cadastro de contas bancárias
     Quando realizo o cadastro com dados válidos e saldo inicial
     Então minha conta deve ser criada com sucesso
 
+  @negative 
+  Cenário: Cadastro de conta com senhas diferentes
+    Dado que estou na área de cadastro
+    Quando realizo o cadastro com senhas diferentes
+    Então deve ser exibida uma mensagem "As senhas não são iguais."
+
+
 @smoke
 Cenário: Cadastro de conta sem saldo inicial
     Dado que estou na área de cadastro
