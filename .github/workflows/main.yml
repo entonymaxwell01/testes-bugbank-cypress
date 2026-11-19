@@ -1,4 +1,4 @@
-name: Pipeline de Testes Cypress
+name: Cypress E2E Tests
 
 on:
   push:
@@ -8,54 +8,68 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
-  pages: write
-  id-token: write
+  contents: read
 
 jobs:
   testes-cypress:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    permissions:
+      contents: write
+
     steps:
-      - name: Checkout do Repositório
+      - name: Checkout do repositório
         uses: actions/checkout@v4
 
       - name: Configurar Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "18"
-          cache: "npm"
+          node-version: "24"
+          cache: npm
 
-      - name: Instalar Dependências
-        run: npm install
+      - name: Instalar dependências
+        run: npm ci
 
-      - name: Rodar Testes Cypress
-        run: npm run allure:run
-        # Continua mesmo se os testes falharem, para podermos gerar o relatório do erro
-        continue-on-error: true
+      - name: Validar TypeScript
+        run: npm run typecheck
 
-      # PASSO NOVO: Baixa o histórico de relatórios da branch gh-pages
-      - name: Baixar Histórico do Relatório
-        uses: actions/checkout@v4
-        if: always()
-        continue-on-error: true
+      - name: Executar ESLint
+        run: npm run lint
+
+      - name: Limpar resultados anteriores
+        run: npm run allure:clean
+
+      - name: Executar testes Cypress
+        id: tests
+        run: npm run test:chrome
+
+      - name: Gerar relatório Allure
+        id: report
+        if: ${{ !cancelled() && steps.tests.outcome != 'skipped' }}
+        run: npm run allure:generate
+
+      - name: Disponibilizar relatório Allure
+        if: ${{ !cancelled() && steps.report.outcome == 'success' }}
+        uses: actions/upload-artifact@v4
         with:
-          ref: gh-pages
-          path: gh-pages
+          name: allure-report
+          path: allure-report/
+          retention-days: 15
 
-      - name: Gerar Relatório Allure com Histórico
-        uses: simple-elf/allure-report-action@v1.7
-        if: always()
+      - name: Disponibilizar screenshots de falhas
+        if: failure()
+        uses: actions/upload-artifact@v4
         with:
-          allure_results: allure-results
-          allure_history: allure-history
-          gh_pages: gh-pages
+          name: cypress-screenshots
+          path: cypress/screenshots/
+          if-no-files-found: ignore
+          retention-days: 15
 
-      - name: Deploy do Relatório para GitHub Pages
-        if: always()
+      - name: Publicar relatório no GitHub Pages
+        if: ${{ !cancelled() && steps.report.outcome == 'success' && github.ref == 'refs/heads/main' }}
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          # A pasta que contém o relatório e o histórico
-          publish_dir: allure-history
-          # Garante que a branch correta seja usada
+          publish_dir: allure-report
           publish_branch: gh-pages

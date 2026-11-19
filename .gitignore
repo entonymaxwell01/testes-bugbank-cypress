@@ -136,4 +136,8 @@ dist
 .pnp.*
 cypress/reports/
 cypress/screenshots
-allure-*
+
+
+# Allure Report
+allure-results/
+allure-report/
