@@ -3,7 +3,7 @@
 ![Cypress](https://img.shields.io/badge/Cypress-17202C?style=for-the-badge&logo=cypress&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
 ![Cucumber](https://img.shields.io/badge/Cucumber-169b62?style=for-the-badge&logo=cucumber&logoColor=white)
-![Allure](https://img.shields.io/badge/Allure_Report-FF6347?style=for-the-badge&logoColor=white)
+[![Allure](https://img.shields.io/badge/Allure_Report-FF6347?style=for-the-badge&logoColor=white)](https://entonymaxwell01.github.io/testes-bugbank-cypress/)
 ![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=githubactions&logoColor=white)
 
 Projeto de automação de testes E2E da aplicação web [BugBank](https://bugbank.netlify.app/), desenvolvido utilizando Cypress, TypeScript e BDD com Cucumber.
@@ -119,9 +119,13 @@ npm ci
 
 ## Relatórios de testes
 
-O projeto utiliza Allure Report 3 para visualização dos resultados e análise das execuções.
+O projeto utiliza Allure Report 3 para visualização dos resultados, análise das execuções e evidências dos testes automatizados.
 
-Para executar os testes e gerar o relatório:
+**[Acessar relatório de testes — Allure Report](https://entonymaxwell01.github.io/testes-bugbank-cypress/)**
+
+O relatório é atualizado automaticamente pela pipeline do GitHub Actions a cada execução da branch `main`.
+
+### Execução local
 
 ```bash
 npm run allure:clean
