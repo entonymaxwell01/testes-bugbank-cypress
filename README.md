@@ -157,10 +157,12 @@ Os relatórios das execuções da branch principal são publicados no GitHub Pag
 - [ ] Automação dos cenários de saldo e extrato.
 - [ ] Automação dos cenários de logout.
 
+
 ## Autor
 
 **Entony Maxwell**
 
-- [LinkedIn](https://www.linkedin.com/in/entony-maxwell/)
-- [GitHub](https://github.com/entonymaxwell01)
-- [Portfólio](https://entonymaxwell01.github.io/)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/entony-maxwell/)
+[![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/entonymaxwell01)
+[![Portfólio](https://img.shields.io/badge/Portfólio-6366F1?style=for-the-badge&logo=googlechrome&logoColor=white)](https://entonymaxwell01.github.io/)
+
