@@ -58,6 +58,7 @@ cypress/
 │   ├── cadastro.feature
 │   └── login.feature
 ├── helpers/
+|   ├── storage.helpers.ts
 │   ├── usuario.helpers.ts
 │   └── index.ts
 ├── pages/
@@ -72,6 +73,7 @@ cypress/
 │   ├── commands.ts
 │   └── e2e.ts
 └── types/
+    ├── conta.types.ts
     └── usuario.types.ts
 ```
 
