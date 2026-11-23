@@ -32,9 +32,8 @@ class LoginPage {
   }
 
   validarLoginRecusado(): void {
-    cy.get(loginElements.loginCard).within(() => {
-      cy.get(loginElements.accountName).should("not.exist");
-    });
+    cy.get(loginElements.loginCard).should("be.visible");
+    cy.get(loginElements.accountName).should("not.exist");
   }
 }
 
