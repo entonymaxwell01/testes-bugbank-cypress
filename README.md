@@ -50,17 +50,24 @@ cypress/
 ├── elements/
 │   ├── cadastro.elements.ts
 │   ├── common.elements.ts
+│   ├── login.elements.ts
 │   └── index.ts
 ├── factories/
 │   └── usuario.factory.ts
 ├── features/
-│   └── cadastro.feature
+│   ├── cadastro.feature
+│   └── login.feature
+├── helpers/
+│   ├── usuario.helpers.ts
+│   └── index.ts
 ├── pages/
 │   ├── cadastro.page.ts
 │   ├── common.page.ts
+│   ├── login.page.ts
 │   └── index.ts
 ├── steps/
-│   └── cadastro.steps.ts
+│   ├── cadastro.steps.ts
+│   └── login.steps.ts
 ├── support/
 │   ├── commands.ts
 │   └── e2e.ts
@@ -77,6 +84,7 @@ cypress/
 - **factories:** geração dinâmica de massa de dados.
 - **types:** contratos e tipos TypeScript.
 - **support:** configurações e comandos globais.
+- **helpers:** preparação de dados e reutilização de fluxos auxiliares.
 
 ## Práticas de automação
 
