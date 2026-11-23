@@ -72,4 +72,5 @@ Then(
 
 Then("o login deve ser recusado", () => {
   CommonPage.validarPopup("Usuário ou senha inválido.");
+  LoginPage.validarLoginRecusado();
 });

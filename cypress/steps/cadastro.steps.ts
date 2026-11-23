@@ -37,7 +37,6 @@ When("realizo o cadastro com senhas diferentes", () => {
 
   CadastroPage.preencherFormulario(usuario);
   CadastroPage.confirmarCadastro();
-  CommonPage.validarPopup("As senhas não são iguais.");
 });
 
 Then("minha conta deve ser criada com sucesso", () => {

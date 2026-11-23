@@ -23,6 +23,7 @@ class CommonPage {
       .find(commonElements.modalMensagem)
       .should("be.visible")
       .and("contain.text", mensagem);
+    cy.get(commonElements.closeModalButton).click();
   }
 }
 
