@@ -1,7 +1,7 @@
 import { CommonPage, LoginPage } from "../pages";
 import { Given, When, Then, Before } from "@badeball/cypress-cucumber-preprocessor";
 import type { Usuario } from "../types/usuario.types";
-import { cadastrarUsuario } from "../helpers/";
+import { prepararUsuarioStorage } from "../helpers/";
 import { usuarioFactory } from "../factories/usuario.factory";
 import { camposLogin } from "../elements";
 import { faker } from "@faker-js/faker";
@@ -17,7 +17,9 @@ Given("que estou na página de login", () => {
 });
 
 Given("que possuo uma conta cadastrada", () => {
-  usuario = cadastrarUsuario();
+  const dados = prepararUsuarioStorage();
+
+  usuario = dados.usuario;
 });
 
 When("realizo login com email e senha validos", () => {
