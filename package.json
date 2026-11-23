@@ -4,9 +4,8 @@
   "description": "projeto de testes da aplicação BugBank",
   "main": "index.js",
   "scripts": {
-    "test": "cypress run",
+    "test": "cypress run --browser chrome",
     "test:open": "cypress open",
-    "test:chrome": "cypress run --browser chrome",
     "test:smoke": "cypress run --env tags=@smoke",
     "typecheck": "tsc --noEmit",
     "lint": "eslint \"**/*.ts\"",
