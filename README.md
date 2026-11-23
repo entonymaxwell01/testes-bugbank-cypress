@@ -37,6 +37,11 @@ Atualmente, a suíte contempla a funcionalidade de cadastro de contas bancárias
 | Cadastro sem senha                | Negativo      |
 | Cadastro sem confirmação de senha | Negativo      |
 | Cadastro com senhas divergentes   | Negativo      |
+| Login com credenciais válidas     | Positivo      |
+| Login sem e-mail                  | Negativo      |
+| Login sem senha                   | Negativo      |
+| Login com e-mail não cadastrado   | Negativo      |
+| Login com senha incorreta         | Negativo      |
 
 ## Arquitetura do projeto
 
