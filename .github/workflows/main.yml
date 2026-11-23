@@ -42,7 +42,7 @@ jobs:
 
       - name: Executar testes Cypress
         id: tests
-        run: npm run test:chrome
+        run: npm run test
 
       - name: Gerar relatório Allure
         id: report
