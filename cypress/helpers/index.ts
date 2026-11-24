@@ -1,2 +1,2 @@
 export { cadastrarUsuario } from "./usuario.helpers";
-export { prepararUsuarioStorage } from "./storage.helpers";
+export { prepararUsuarioStorage, prepararUsuariosStorage } from "./storage.helpers";
