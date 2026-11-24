@@ -25,6 +25,10 @@ class CommonPage {
       .and("contain.text", mensagem);
     cy.get(commonElements.closeModalButton).click();
   }
+
+  clicarBotaoVoltar(): void {
+    cy.get(commonElements.backButton).click();
+  }
 }
 
 export default new CommonPage();

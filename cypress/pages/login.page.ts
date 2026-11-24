@@ -1,4 +1,4 @@
-import { loginElements, camposLogin } from "../elements/";
+import { loginElements, camposLogin, homeElements } from "../elements/";
 import commonPage from "./common.page";
 
 class LoginPage {
@@ -20,9 +20,7 @@ class LoginPage {
   }
 
   validarLogin(nomeUsuario: string): void {
-    cy.get(loginElements.accountName)
-      .should("be.visible")
-      .and("contain.text", `Olá ${nomeUsuario}`);
+    cy.get(homeElements.accountName).should("be.visible").and("contain.text", `Olá ${nomeUsuario}`);
   }
 
   validarMensagemCampo(campo: keyof typeof camposLogin, mensagem: string): void {
@@ -33,7 +31,7 @@ class LoginPage {
 
   validarLoginRecusado(): void {
     cy.get(loginElements.loginCard).should("be.visible");
-    cy.get(loginElements.accountName).should("not.exist");
+    cy.get(homeElements.accountName).should("not.exist");
   }
 }
 

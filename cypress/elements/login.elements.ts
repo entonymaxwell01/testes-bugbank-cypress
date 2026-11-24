@@ -3,7 +3,6 @@ export const loginElements = {
   emailInput: "input[name='email']",
   passwordInput: "input[name='password']",
   acessarButton: "button[type='submit']",
-  accountName: "p[id='textName']",
 };
 
 export const camposLogin = {
