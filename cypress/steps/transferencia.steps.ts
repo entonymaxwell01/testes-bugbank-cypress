@@ -64,14 +64,20 @@ When("realizo uma transferência de {int} reais", (valorTransferencia: number) =
   );
 });
 
-When("realizo uma transferência de {int} reais para uma conta inexistente", () => {
-  const numeroContaInexistente = `${faker.number.int({
-    min: 100,
-    max: 999,
-  })}-${faker.number.int({ min: 0, max: 9 })}`;
-  TransferenciaPage.clicarMenuTransferencia();
-  TransferenciaPage.preencherFormTransferencia(numeroContaInexistente, "200");
-});
+When(
+  "realizo uma transferência de {int} reais para uma conta inexistente",
+  (valorTransferencia: number) => {
+    const numeroContaInexistente = `${faker.number.int({
+      min: 100,
+      max: 999,
+    })}-${faker.number.int({ min: 0, max: 9 })}`;
+    TransferenciaPage.clicarMenuTransferencia();
+    TransferenciaPage.preencherFormTransferencia(
+      numeroContaInexistente,
+      String(valorTransferencia),
+    );
+  },
+);
 
 Then("a transferência deve ser concluída com sucesso", () => {
   TransferenciaPage.validarPopupTransferencia("Transferencia realizada com sucesso");
