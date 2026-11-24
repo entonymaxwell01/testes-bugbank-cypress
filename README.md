@@ -26,7 +26,13 @@ O projeto tem como objetivo aplicar boas práticas de engenharia de testes, cont
 
 ## Escopo dos testes
 
-Atualmente, a suíte contempla a funcionalidade de cadastro de contas bancárias.
+Atualmente, o projeto contempla **17 testes E2E automatizados**, distribuídos entre três funcionalidades:
+
+- **Cadastro:** 7 testes, incluindo cenários positivos, validação de campos obrigatórios e divergência de senhas.
+- **Login:** 5 testes, incluindo autenticação válida, campos obrigatórios e credenciais inválidas.
+- **Transferências:** 5 testes, incluindo operações com saldo suficiente, saldo insuficiente, conta inexistente e valores inválidos.
+
+Os testes utilizam preparação dinâmica de dados, validações de interface e verificações de persistência no `localStorage`.
 
 | Cenário                           | Classificação |
 | --------------------------------- | ------------- |
