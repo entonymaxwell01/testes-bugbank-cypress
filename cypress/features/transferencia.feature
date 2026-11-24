@@ -4,6 +4,7 @@
 Funcionalidade: Transferência bancária
   Como um cliente devidamente autenticado no sistema
   Quero poder realizar transferencias a partir da minha conta bancária
+  Para transferir dinheiro para outra conta
 
   @smoke
   Cenário: Transferência entre contas com saldo suficiente
