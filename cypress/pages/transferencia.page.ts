@@ -46,7 +46,6 @@ class TransferenciaPage {
   preencherFormTransferencia(account: string, value: string): void {
     const accountNumber = account.split("-")[0];
     const accountDigit = account.split("-")[1];
-    console.log(accountNumber);
     cy.get(transferenciaElements.accountData).within(() => {
       cy.get(transferenciaElements.accountNumber).type(accountNumber);
       cy.get(transferenciaElements.accountDigit).type(accountDigit);
@@ -55,8 +54,8 @@ class TransferenciaPage {
     cy.get(transferenciaElements.transferirButton).click();
   }
 
-  validarTransferenciaComSucesso(): void {
-    commonPage.validarPopup("Transferencia realizada com sucesso");
+  validarPopupTransferencia(messageText: string): void {
+    commonPage.validarPopup(messageText);
   }
 
   verificarSaldoContaStorage(email: string, saldoEsperado: number): void {
