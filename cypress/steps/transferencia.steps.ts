@@ -47,10 +47,7 @@ Given("existe uma conta destinatária cadastrada", () => {
   if (!contaDestino) {
     throw new Error("Conta destinatária não cadastrada.");
   }
-  TransferenciaPage.verificarContaDestinataria(
-    contaDestino.usuario.email,
-    contaDestino.accountNumber,
-  );
+  TransferenciaPage.verificarConta(contaDestino.usuario.email, contaDestino.accountNumber);
 });
 
 When("realizo uma transferência de {int} reais", (valorTransferencia: number) => {

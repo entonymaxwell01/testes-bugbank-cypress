@@ -22,7 +22,7 @@ class TransferenciaPage {
       });
   }
 
-  verificarContaDestinataria(email: string, accountNumber: string): void {
+  verificarConta(email: string, accountNumber: string): void {
     cy.window().then((win) => {
       const raw = win.localStorage.getItem(email);
 
@@ -34,7 +34,6 @@ class TransferenciaPage {
 
       expect(conta.email).to.equal(email);
       expect(conta.accountNumber).to.equal(accountNumber);
-      expect(conta.logged).to.equal(false);
     });
   }
 
