@@ -128,9 +128,8 @@ npm ci
 
 | Comando                | Descrição                    |
 | ---------------------- | ---------------------------- |
-| `npm test`             | Executar toda a suíte        |
+| `npm test`             | Executar toda a suíte no Chrome        |
 | `npm run test:open`    | Abrir a interface do Cypress |
-| `npm run test:chrome`  | Executar testes no Chrome    |
 | `npm run test:smoke`   | Executar testes smoke        |
 | `npm run typecheck`    | Validar tipagem TypeScript   |
 | `npm run lint`         | Executar análise estática    |
