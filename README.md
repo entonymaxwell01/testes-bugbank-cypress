@@ -173,9 +173,9 @@ Os relatórios das execuções da branch principal são publicados no GitHub Pag
 - [x] Refatoração da arquitetura POM.
 - [x] Automação dos cenários de cadastro.
 - [x] Automação dos cenários de login.
-- [ ] Automação dos cenários de transferência.
-- [ ] Automação dos cenários de saldo e extrato.
-- [ ] Automação dos cenários de logout.
+- [x] Automação dos cenários de transferência.
+- [x] Automação dos cenários de saldo e extrato.
+
 
 ## Autor
 
